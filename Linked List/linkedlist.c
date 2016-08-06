@@ -9,18 +9,19 @@
 
 int main()
 {
-	link *head, *node;
-	head = getNode();
-	putData(head);
-	node = head;
+	link *list = getNode(); //Initializes
 
-	while(getAns())
-	{
-		node -> next = getNode();
-		node  = node -> next;
-		putData(node);
-	}
+	getInput(list); //Gets inputs
 
-	display(head);
+	list = delete(list); //deletes last element
+
+	append(list, 4); //adds 4 to the end
+	
+	printf("Length%d\n", len(list)); //prints length
+	
+	
+	display(list); //prints whole linked list
+
+
 
 }
