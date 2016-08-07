@@ -10,7 +10,7 @@ CSE, 3rd sem
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "link.h"
+#include "link1.h"
 
 
 
@@ -27,8 +27,10 @@ int main()
 	
 	printlen(list); //prints length
 	printindex(list, 5); //prints of index of 5
-
-	display(list); //prints whole linked list
+	display(list);  //prints whole linked list
 	print_sorted(list); //prints sorted list
+
+	//display(reverse(list)); //prints reversed linked list
+	
 
 }
