@@ -35,6 +35,7 @@ void printindex(struct link *list, int i);
 void swap(struct link *a, struct link *b);
 void sort(struct link *list);
 void print_sorted(struct link *list);
+struct link *reverse(struct link *list) 
 
 
 
@@ -265,6 +266,19 @@ void print_sorted(struct link *list)
 	display(node);
 }
  
+ /*reverses the linked list*/
+struct link *reverse(struct link *list) 
+{
+  struct link *new_list = 0;
+  while (list) {
+    struct link *next = list->next;
+    list->next = new_list;
+    new_list = list;
+    list = next;
+  }
+  return new_list;
+}
+
 
 
 #endif
