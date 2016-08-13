@@ -48,7 +48,7 @@ typedef int BOOLEAN;
 /*20*/float        mean(struct link *list);
 /*21*/void         append(struct link** list, int num);
 /*22*/void         push(struct link** head, int num);
-/*23*/struct link *pop(struct link *head);
+/*23*/void         pop(struct link **head);
 /*24*/void         insert(struct link **list, int pos, int num);
 /*25*/void         Delete(struct link *head, int pos);
 /*26*/void         sort(struct link *list);
@@ -212,14 +212,14 @@ void append(struct link** list, int num)
 /*
 Deletes an element from the end of the list
 */
-struct link *pop(struct link *head)
+void pop(struct link **head)
 {
-  struct link *temp =head;
+  struct link *temp =(*head);
   struct link *t;
-  if(head->next==NULL)
+  if((*head)->next==NULL)
   {
-    free(head);
-    head=NULL;
+    free(*head);
+    (*head)=NULL;
   }
   else
   {
@@ -231,7 +231,6 @@ struct link *pop(struct link *head)
      free(t->next);
      t->next=NULL; 
   }    
-  return head;
 }
 
 /*
