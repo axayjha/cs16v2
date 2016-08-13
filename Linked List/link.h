@@ -214,23 +214,29 @@ Deletes an element from the end of the list
 */
 void pop(struct link **head)
 {
-  struct link *temp =(*head);
-  struct link *t;
-  if((*head)->next==NULL)
-  {
-    free(*head);
-    (*head)=NULL;
-  }
-  else
-  {
-     while(temp->next != NULL)
-     {
-        t=temp;
-        temp=temp->next;
-     }
-     free(t->next);
-     t->next=NULL; 
-  }    
+	if(len(*head)==0)
+	{
+		fprintf(stderr, "List empty. Can't Pop(). Exiting.\n");
+		exit(-1);
+	}
+
+	struct link *temp =(*head);
+	struct link *t;
+	if((*head)->next==NULL)
+	{
+    	free(*head);
+    	(*head)=NULL;
+	}
+	else
+	{
+		while(temp->next != NULL)
+    	{
+        	t=temp;
+        	temp=temp->next;
+		}
+    	free(t->next);
+    	t->next=NULL; 
+	}    
 }
 
 /*
