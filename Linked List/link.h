@@ -66,6 +66,7 @@ typedef int BOOLEAN;
 /*38*/struct link *Union(struct link *a, struct link *b);
 /*39*/struct link *Intersection(struct link *a, struct link *b);
 /*40*/struct link *new_list(const char *str);
+/*41*/struct link *new_List();
 
 
 
@@ -736,6 +737,22 @@ struct link *new_list(const char *str)
     return reverse(list);
 }
 
+/*Inputs data at run time like any array*/
+struct link *new_List()
+{
+	printf("Enter data (enter \"x\" to stop): ");
+	struct link *list = NULL;
+	int dat;
+	char inp[1000]="";
+	scanf("%s", inp);	
+	while(strcmp(inp, "x")!=0)
+	{		
+		push(&list, atoi(inp));
+		scanf("%s", inp);
+	}
+
+    return reverse(list);
+}
 
 #endif
 
