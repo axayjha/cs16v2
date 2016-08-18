@@ -3,7 +3,7 @@ Codes for STCET 3rd Sem
 
 **run.sh** – a shell script to compile and run a c code in one go without having to type 
 `gcc prog.c -o prog.out`
-and `./prog.out` seperately
+and `./prog.out` separately
 
 
 Using run.sh
