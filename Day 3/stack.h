@@ -13,9 +13,9 @@ stack stk;
 stk.top = -1; 
 
 //Do operations
-push(&stk, 6);
+pushDebug(&stk, 6);
 display(&stk);
-pop(&stk);
+delete(&stk);
 display(&stk);
 printReverse(&stk);
 
