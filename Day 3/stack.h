@@ -29,7 +29,7 @@ printReverse(&stk);
 #include <stdlib.h>
 
 /*Max possible length of the stacl*/
-#define MAX 8 
+#define MAX 10
 
 /*Struct to store stack data*/
 typedef struct
