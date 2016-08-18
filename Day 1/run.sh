@@ -1,5 +1,5 @@
 # Author - Akshay Anand
-# CSE 2nd Sem - St. Thomas' College of Engineering & Technology
+# CSE 3rd Sem - St. Thomas' College of Engineering & Technology
 
 
 #!/bin/bash
