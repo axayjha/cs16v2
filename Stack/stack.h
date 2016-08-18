@@ -40,6 +40,7 @@ typedef struct
 void push(stack *st, int num);
 void pop(stack *st);
 void display(stack *st);
+void printReverse(stack *st);
 
 /*pushes a value to the end of the stack*/
 void push(stack *st, int num)
@@ -99,12 +100,32 @@ void display(stack *st)
 	}
 	printf("[ ");
 
-	for(int i=0; i <=(st->top); i++)
+	for(int i=(st->top); i >=0; i--)
 	{
 		printf("%d ", (st->data)[i]);
 	}
 	printf("]\n");
 }
+
+/*Prints the stack in reversed order*/
+void printReverse(stack *st)
+{
+	printf("REVERSED STACK: ");
+	if(st->top == -1)
+	{
+		printf("*Stack empty*\n");
+		return;
+	}
+	printf("[ ");
+
+	for(int i=0; i <=(st->top); i++)
+	{
+		printf("%d ", (st->data)[i]);
+	}
+	printf("]\n");
+
+}
+
 
 
 
