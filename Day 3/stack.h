@@ -46,6 +46,7 @@ void display(stack *);
 void printReverse(stack *);
 
 /*pushes a value to the end of the stack and prints each step*/
+/*Don't write this function in lab file
 void pushDebug(stack *st, int num)
 {
 	printf("PUSH %d --->  ", num);
@@ -69,6 +70,7 @@ void pushDebug(stack *st, int num)
 
 	return;
 }
+*/
 
 /*pushes a value to the end of the stack*/
 void push(stack *st, int num)
@@ -87,6 +89,7 @@ void push(stack *st, int num)
 }
 
 /*deletes a value from the end of the stack*/
+/*Neither this
 void delete(stack *st)
 {
 	printf("DELETE --->  ");
@@ -107,6 +110,7 @@ void delete(stack *st)
 	printf("] ---> DELETED %d\n", num);
 
 }
+*/
 
 /*pops a value from the end of the stack and returns it*/
 int pop(stack *st)
