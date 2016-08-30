@@ -24,13 +24,17 @@ Alternate way
 ---------------
 
 Set the PATH variable using export command
-
-`cp run.sh /home/user/Documents/run`
-
-`export PATH=/home/user/Documents:"${PATH}"`
+`mkdir ~/bin`
+either go to the directory with run.sh and cp it to ~/bin
+`cp run.sh ~/bin`
+or `nano ~/bin/run.sh` and paste the run.sh code and ^O and ^X to create 
+and then
+`export PATH=~/bin:"${PATH}"`
 
 
 and then to compile and run, you just need to do: 
 
-`user@terminal:~$ run program.c`
+`user@terminal:~$ run.sh program.c`
 
+You can also rename the file to be just `run` and do
+`user@terminal:~$ run program.c`
