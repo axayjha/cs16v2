@@ -24,7 +24,12 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 function usage {
-    echo "usage: run [-options] file ..."    
+    echo -e "${bold}NAME${normal}
+        run - script to invoke different compilers, assemblers, 
+        interpreters, executables. Can operate on multiple files
+        at once. \n"
+    echo -e "${bold}SYNOPSIS${normal} 
+        run [-options] file ... \n"    
     echo "${bold}DESCRIPTION${normal}
         When you invoke run, it normally does preprocessing, compilation,
         assembly and linking using a GNU compiler (for C/C++/ASM) or the most
@@ -35,15 +40,22 @@ function usage {
         to run the compiler and just the executable if avaible.
         The output consists of object files output by the assembler.
     "
-    echo "${bold}OPTIONS: ${normal}"
-    echo "run [${bold}-c${normal}] [@file] ...   compiles files"
-    echo "    [${bold}-r${normal}] [@file] ...   runs output files"
-    echo "    [${bold}-h| --help${normal}]       display help information"
-    echo "    [${bold}-v| --version${normal}]    display version"
+    echo "${bold}OPTIONS ${normal}"
+    echo "        run [${bold}-c${normal}] [@file] ...         compiles files"
+    echo "            [${bold}-r${normal}] [@file] ...         runs output files"
+    echo "            [${bold}-cr| -rc${normal}] [@file] ...   compiles and runs both"
+    echo "            [${bold}-h| --help${normal}]             display help information"
+    echo "            [${bold}-v| --version${normal}]          display version"    
     echo "  "
-    echo "${bold}AUTHOR${normal} :   Akshay Jha"
-    echo "For bug reporting please see:"
-    echo "<http://www.github.com/axayjha>."
+    echo -e "${bold}COPYRIGHT${normal}
+        Copyright © 2016 Free Software Foundation, Inc. License GPLv3+: 
+        GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+        This is free software: you are free to change and redistribute it. 
+        There is NO WARRANTY, to the extent permitted by law. \n"${bold}
+    echo "${bold}AUTHOR${normal}
+        Akshay Jha
+        For bug reporting please see:
+        <http://www.github.com/axayjha>."
     exit 1
 }
 
@@ -51,6 +63,7 @@ function version {
   echo "RUN version 1.01"
   echo "Copyright (C) 2016 AkshayJha"
 }
+
 
 function compile {
   ## C
@@ -87,8 +100,8 @@ function compile {
     echo -e "$programname: file extension not known.\n"
      
   fi
-}
 
+}
 
 function run {
   ## C
@@ -126,6 +139,7 @@ function run {
   fi
 }
 
+
 Compile="fasle"
 Run="fasle"
 
@@ -142,8 +156,8 @@ case "$1" in
   -cr| -rc) Compile="true";  Run="true"; shift;;
   -*) echo invalid option;  exit 1 ;;
   *) Compile="true";  Run="true" ;;
-  
 esac
+
 
 for var in "$@"
 do
@@ -173,7 +187,6 @@ do
       fi      
       run $var
       echo ""
-      
     else
       exit 1
     fi
