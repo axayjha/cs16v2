@@ -52,7 +52,6 @@ function version {
   echo "Copyright (C) 2016 AkshayJha"
 }
 
-
 function compile {
   ## C
   if [[ "$1" == *.c ]] ;
@@ -88,8 +87,8 @@ function compile {
     echo -e "$programname: file extension not known.\n"
      
   fi
-
 }
+
 
 function run {
   ## C
@@ -127,7 +126,6 @@ function run {
   fi
 }
 
-
 Compile="fasle"
 Run="fasle"
 
@@ -146,9 +144,6 @@ case "$1" in
   *) Compile="true";  Run="true" ;;
   
 esac
-
-
-
 
 for var in "$@"
 do
@@ -178,6 +173,7 @@ do
       fi      
       run $var
       echo ""
+      
     else
       exit 1
     fi
