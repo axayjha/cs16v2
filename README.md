@@ -23,17 +23,18 @@ Then simply do this to compile and run a “program.c” in one go-
 Alternate way
 ---------------
 
-Set the PATH variable using export command
+Download the stpath script from my shell script repo
+https://github.com/axayjha/shellscripts/blob/master/stpath
 
-`mkdir ~/bin`
-either go to the directory with run.sh and cp it to ~/bin
+Run
+`user@terminal:~$ bash stpath stapth`
 
-`cp run.sh ~/bin`
+Go to the folder having run.sh
+and do
+`user@terminal:~$ stapth run.sh`
 
-or `nano ~/bin/run.sh` and paste the run.sh code and ^O and ^X to create 
-and then
+And you're done!
 
-`export PATH=~/bin:"${PATH}"`
 
 
 and then to compile and run, you just need to do: 
