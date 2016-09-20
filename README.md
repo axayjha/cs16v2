@@ -27,11 +27,14 @@ Download the stpath script from my shell script repo
 https://github.com/axayjha/shellscripts/blob/master/stpath
 
 Run
+
 `user@terminal:~$ bash stpath stapth`
+
 
 Go to the folder having run.sh
 and do
-`user@terminal:~$ stapth run.sh`
+
+`user@terminal:~$ stpath run.sh`
 
 And you're done!
 
