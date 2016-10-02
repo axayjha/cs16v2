@@ -14,6 +14,55 @@ struct link
 	
 };
 
+struct link *getNode();
+void putData(struct link **head, int num);
+void push(struct link **head, int num);
+void pop(struct link **head);
+int len(struct link *head);
+void display(struct link *head);
+
+
+int main()
+{
+	struct link *head = getNode();
+	int ch, num;
+
+	menu:
+	printf("Choose option:\n1. Push\t\t2. Pop\n3. Display\t4. Exit\n");
+	printf(">");
+	scanf("%d", &ch);
+	switch(ch)
+	{
+		case 1:			
+			printf("Enter number to push: ");
+			scanf("%d", &num);
+			push(&head, num);			
+			goto menu;
+			break;
+		case 2:				
+			pop(&head);
+			goto menu;
+			break;
+		case 3:
+			printf("Stack: ");
+			display(head);
+			goto menu;
+			break;
+		case 4:
+			return 0;	
+		default:
+			printf("Invalid option. Try again.\n");	
+			goto menu;
+
+	}
+	
+
+
+}
+
+
+
+
 struct link *getNode()
 {
 	struct link *node = (struct link*)malloc(sizeof(struct link *));
@@ -100,40 +149,3 @@ void display(struct link *head)
 }
 
 
-int main()
-{
-	struct link *head = getNode();
-	int ch, num;
-
-	menu:
-	printf("Choose option:\n1. Push\t\t2. Pop\n3. Display\t4. Exit\n");
-	printf(">");
-	scanf("%d", &ch);
-	switch(ch)
-	{
-		case 1:			
-			printf("Enter number to push: ");
-			scanf("%d", &num);
-			push(&head, num);			
-			goto menu;
-			break;
-		case 2:				
-			pop(&head);
-			goto menu;
-			break;
-		case 3:
-			printf("Stack: ");
-			display(head);
-			goto menu;
-			break;
-		case 4:
-			return 0;	
-		default:
-			printf("Invalid option. Try again.\n");	
-			goto menu;
-
-	}
-	
-
-
-}
