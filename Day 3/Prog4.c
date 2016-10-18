@@ -7,100 +7,123 @@
  * CSE 3nd Sem - St. Thomas' College of Engineering & Technology
  */
 
-#include "stack.h"
+#include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <math.h>
+#include <ctype.h>
+#include <stdbool.h>
 
-float oper(char, int, int op2);
+#define MAX 40
+#define TRUE 1
+#define FALSE 2
+
+
+typedef struct {
+	float data[MAX];
+	int top;	
+}stack;
+
+void push(stack *, float);
+float pop(stack *);
+void display(stack);
+float operate(char operator, float operand1, float operand2);
 
 int main()
 {
-	int i, j;
-	char exp[100], exp1[100];
+	int i, n;
+	stack P;
+	P.top = -1;
 
-	stack stk;
-	stk.top = -1;
+	char expression[100];
+	printf("Enter expression: ");
+	scanf(" %[^\n]s", expression);
 
-
-	printf("Enter the expression: ");
-	scanf("%s", exp1);
-
-	int n=0, m=0;
-	for(n=0; exp1[n]!='\0'; n++);
-	for(m=0,n--; n>=0; n--, m++)
-		exp[m]=exp1[n];
-	exp[m]='\0';	
+	char reverse[100];
+	for(i = 0, n = strlen(expression); i < n; i++)
+		reverse[i] = expression[n-i-1];
+	reverse[i] = '\0';
 
 
-	char *token = strtok(exp, ",");
 
-    while(token) {
-    	n=0,m=0;
-    	for(; token[n]!='\0'; n++);
-    	n--;
-    	while(m<n)
-    	{
-    		char temp = token[n];
-    		token[n]=token[m];
-    		token[m]=temp;
-    		n--;m++;
-    	}	
+	char *token = strtok(reverse, " ");
+	while(token){
 
-
-    	if(isdigit(token[0]))
-		{
-			j=atoi(token);
-			push(&stk, j);
-		}
-		else
-		{
-			int op2 = pop(&stk);
-			int op1 = pop(&stk);
-			int value = oper(token[0], op1, op2);
-			push(&stk, value);
+		i = 0, n = strlen(token) - 1;
+		while(i++ < n--)		{
+			char temp = token[i];
+			token[i] = token[n];
+			token[n] = temp;
 		}
 
-        
+		if(isdigit(token[0]))
+			push(&P, atof(token));
+		else{
+			float operand1 = pop(&P);
+			float operand2 = pop(&P);
+			push(&P, operate(token[0], operand1, operand2));
+		}
+		token = strtok(NULL, " ");
+	}
+	printf("Result = %.2f\n", pop(&P));
 
-        token = strtok(NULL, ",");
-    }	
-
-	
-	printf("Result: %d\n", pop(&stk));
 
 }
 
-float oper(char ch, int op1, int op2)
-{
-	float val;
-	switch(ch)
-	{
-		case '+':
-			val =  op1 + op2;
-			break;
-		case '-':
-			val = op1 - op2;	
-			break;
-		case '*':
-			val = op1*op2;
-			break;
-		case '/':
-			val = ((float)op1)/op2;
-			break;
-		case '^':
-			val = pow(op1, op2);
-			break;
-		default:
-			printf("INVALID OPERATOR\n");	
-			exit(-1);
+void push(stack *stk, float num){
+	if(stk->top == MAX)	{
+		printf("Stack Overflow\n");
+		return;
 	}
 
-	return val;
+	else stk->data[++(stk->top)] = num;
 }
 
+float pop(stack *stk){
+	if(stk->top == -1){
+		printf("Stack underflow\n");
+		exit(-1);
+	}
+	else stk->top--;
+	return stk->data[stk->top + 1];
+}
+
+void display(stack stk){
+	for(int i=0; i<=stk.top; i++)
+		printf("%.2f ", stk.data[i]);
+	printf("\n");
+}
+
+float operate(char operator, float operand1, float operand2){
+	float result = 0;
+
+	switch(operator){
+		case '+':
+			result = operand1 + operand2;
+			break;
+		case '-':
+			result = operand2 - operand1;
+			break;
+		case '*':
+			result = operand1 * operand2;
+			break;
+		case '/':
+			result = operand2 / operand1; 	
+			break;
+		case '^':
+			result = pow(operand1, operand2);
+			break;
+		default:
+			printf("Invalid operator\n");			
+			exit(-1);		
+
+	}
+
+	return result;
+}
 /*OUTPUT
 
-Enter the expression: +,-,2,7,*,8,/,4,12
+Enter the expression: + - 2 7 * 8 / 4 12
 Result: 29
 
 */
