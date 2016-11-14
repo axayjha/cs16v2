@@ -1,5 +1,13 @@
-#include <stdio.h>
+/* Day 7
+ * Question 1
+ * Write a program to implement heapsort algo.
+ *
+ * Author - 
+ * Akshay Anand
+ * CSE 3nd Sem - St. Thomas' College of Engineering & Technology
+ */
 
+#include <stdio.h>
 
 void maxHeapify(int arr[], int n, int i);
 void buildMaxHeap(int *arr, int n);
