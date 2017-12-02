@@ -1,12 +1,13 @@
 /*
- *  Implementation of quicksort algorithm 
+ *  Implementation of randomized quicksort algorithm 
  *  github.com/AxayJha                    
  *
  */
 
 #include <stdio.h>
+#define SIZE(array) sizeof(array)/sizeof(array[0])
 
-void quicksort(int *A, int p, int r);
+void rand_quicksort(int a[], int n));
 int partition(int *A, int p, int r);
 void swap(int *a, int *b);
 
@@ -22,7 +23,7 @@ int main()
    for(int i=0; i<n; i++)
       scanf("%d", &a[i]);
 
-   quicksort(a, 0, n-1);
+   rand_quicksort(a, SIZE(a));
 
    for(int i=0; i<n; i++)
       printf("%d ", a[i]);
@@ -31,30 +32,19 @@ int main()
 
 }
 
-void quicksort(int *A, int p, int r)
+void rand_quicksort(int a[], int n)
 {
-   if( p < r )
-   {
-      int q = partition(A, p, r);
-      quicksort(A, p, q-1);
-      quicksort(A, q+1, r);
-   }
-}
+	int last=0;
+	if(n<=1) return;
 
-int partition(int *A, int p, int r)
-{
-   int x = A[r];
-   int i = p-1;
-   for(int j=p; j <= r-1; j++)
-   {
-      if( A[j] <= x )
-      {
-         i++;
-         swap(&A[i], &A[j]);
-      }
-   }
-   swap(&A[i+1], &A[r]);
-   return (i+1);
+	swap(&a[0], &a[rand()%n]);
+	for(int i=0; i<n; i++)
+		if(a[i] < a[0])
+			swap(&a[++last], &a[i]);
+	swap(&a[0], &a[last]);
+
+	rand_quicksort(a, last);
+	rand_quicksort(a+last+1, n-last-1);
 }
 
 void swap(int *a, int *b)
