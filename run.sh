@@ -79,8 +79,8 @@ function compile {
   ## C++
   elif [[ "$1" == *.cpp ]];
   then
-    echo g++ $1 -lm -o "${1//.c}".out
-    g++ $1 -lm -o "${1//.c}".out
+    echo g++ $1 -lm -o "${1//.cpp}".out
+    g++ $1 -lm -o "${1//.cpp}".out
   ## Java
   elif [[ "$1" == *.java ]];
   then
@@ -117,8 +117,8 @@ function run {
   ## C++
   elif [[ "$1" == *.cpp ]];
   then
-    echo running "${1//.c}".out
-    ./"${1//.c}".out
+    echo running "${1//.cpp}".out
+    ./"${1//.cpp}".out
   ## Java
   elif [[ "$1" == *.java ]];
   then
@@ -156,6 +156,7 @@ case "$1" in
   -cr| -rc) Compile="true";  Run="true"; shift;;
   -*) echo invalid option;  exit 1 ;;
   *) Compile="true";  Run="true" ;;
+  
 esac
 
 
@@ -191,3 +192,4 @@ do
       exit 1
     fi
 done
+
